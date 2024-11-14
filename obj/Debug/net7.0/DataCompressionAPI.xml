@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataCompressionAPI</name>
+    </assembly>
+    <members>
+        <member name="T:DataCompressionAPI.Migrations.InitialMigrationCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:DataCompressionAPI.Migrations.InitialMigrationCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DataCompressionAPI.Migrations.InitialMigrationCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DataCompressionAPI.Migrations.InitialMigrationCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:DataCompressionAPI.Migrations.UpdateMigrationCreateInitialSetup">
+            <inheritdoc />
+        </member>
+        <member name="M:DataCompressionAPI.Migrations.UpdateMigrationCreateInitialSetup.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DataCompressionAPI.Migrations.UpdateMigrationCreateInitialSetup.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DataCompressionAPI.Migrations.UpdateMigrationCreateInitialSetup.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
