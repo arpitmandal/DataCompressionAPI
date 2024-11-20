@@ -84,3 +84,5 @@
 /Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/bin/Debug/net7.0/SharpCompress.dll
+/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/bin/Debug/net7.0/SixLabors.ImageSharp.dll

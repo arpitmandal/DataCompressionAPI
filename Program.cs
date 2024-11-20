@@ -6,8 +6,14 @@ using DataCompressionAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
+// Add the services
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 100_000_000_000; // Set limit to 1000 MB
+});
 
 // Add the AppDbContext with MySQL configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -20,6 +26,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<CompressionService>();
 
 // Configure JWT Authentication with a default scheme
 var key = Encoding.UTF8.GetBytes("your-very-secret-key"); // Ensure this key matches the one in AuthService
@@ -119,5 +126,4 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();
