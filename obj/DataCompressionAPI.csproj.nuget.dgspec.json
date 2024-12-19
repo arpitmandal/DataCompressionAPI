@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj": {}
+    "/Users/arpitmandal/Desktop/Work Projects/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj": {}
   },
   "projects": {
-    "/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj": {
+    "/Users/arpitmandal/Desktop/Work Projects/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj",
+        "projectUniqueName": "/Users/arpitmandal/Desktop/Work Projects/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj",
         "projectName": "DataCompressionAPI",
-        "projectPath": "/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj",
+        "projectPath": "/Users/arpitmandal/Desktop/Work Projects/DataCompression/DataCompressionAPI/DataCompressionAPI.csproj",
         "packagesPath": "/Users/arpitmandal/.nuget/packages/",
-        "outputPath": "/Users/arpitmandal/Desktop/DataCompression/DataCompressionAPI/obj/",
+        "outputPath": "/Users/arpitmandal/Desktop/Work Projects/DataCompression/DataCompressionAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/arpitmandal/.nuget/NuGet/NuGet.Config"
