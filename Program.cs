@@ -9,27 +9,27 @@ using System.Text;
 using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add the services
+
+// Configure Form Options for large file uploads
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.MultipartBodyLengthLimit = 100_000_000_000; // Set limit to 1000 MB
+    options.MultipartBodyLengthLimit = 1_000_000_000; // Set limit to 1000 MB (1 GB)
 });
 
-// Add the AppDbContext with MySQL configuration
+// Configure AppDbContext with MySQL
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(9, 1, 0))
+        new MySqlServerVersion(new Version(9, 1, 0)) // Replace with your MySQL version
     )
 );
 
-// Add services to the container.
-builder.Services.AddControllers();
+// Register services for Dependency Injection
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<CompressionService>();
 
-// Configure JWT Authentication with a default scheme
-var key = Encoding.UTF8.GetBytes("your-very-secret-key"); // Ensure this key matches the one in AuthService
+// Configure JWT Authentication
+var key = Encoding.UTF8.GetBytes("your-very-secret-key"); // Replace with your actual key
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,12 +43,12 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = "your-app", // Must match issuer in AuthService
-        ValidAudience = "your-app", // Must match audience in AuthService
+        ValidIssuer = "your-app", // Replace with your issuer
+        ValidAudience = "your-app", // Replace with your audience
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 
-    // Automatically add "Bearer " prefix if missing
+    // Automatically prepend "Bearer " if missing
     options.Events = new JwtBearerEvents
     {
         OnMessageReceived = context =>
@@ -63,7 +63,8 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Configure Swagger with JWT authentication
+// Add controllers and Swagger configuration
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -79,7 +80,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    // Define the Authorization header without requiring "Bearer"
+    // Add JWT Authentication to Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -103,7 +104,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    // Enable XML comments for better documentation (optional)
+    // Enable XML documentation
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
@@ -111,14 +112,14 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Middleware configuration
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Data Compression API v1");
-        c.RoutePrefix = string.Empty; // Serve Swagger UI at the app's root
+        c.RoutePrefix = string.Empty; // Serve Swagger UI at the root
     });
 }
 

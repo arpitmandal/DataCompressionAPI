@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - mysql
+    networks:
+      - datacompression-network
+
+  mysql:
+    image: mysql:9.1.0
+    environment:
+      MYSQL_ROOT_PASSWORD: jc381388m
+      MYSQL_DATABASE: DataCompressionDB
+    ports:
+      - "3308:3306"
+    networks:
+      - datacompression-network
+    volumes:
+      - ./DataCompressionDB.sql:/docker-entrypoint-initdb.d/DataCompressionDB.sql
+      - mysql-data:/var/lib/mysql
+
+networks:
+  datacompression-network:
+
+volumes:
+  mysql-data:
